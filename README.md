@@ -7,9 +7,10 @@
 
 <strong>This project is not suitable for use in a production environment as it runs very slowly even in standard medium projects. This project has been completely rewritten and built with super performance in mind and is available in the new repository as a <a href="https://github.com/neuronetio/gantt-schedule-timeline-calendar">gantt-schedule-timeline-calendar</a>.</strong>
 
-
 <h2><a href="https://neuronet.io/gantt-elastic/" target="_blank">Gantt-elastic demo here</a></h2>
+<h3>增加一行展示多个图形,以及图形自定义展示</h3>
 
+![preview img](70c1260f1f1aa2352ed7cd00f195789.png)
 ![preview img](https://github.com/neuronetio/gantt-elastic/raw/master/gantt-elastic.jpg)
 ![preview gif](https://github.com/neuronetio/gantt-elastic/raw/master/gantt-elastic.gif)
 ![preview gif](https://github.com/neuronetio/gantt-elastic/raw/master/grab-scroll.gif)
@@ -76,7 +77,7 @@ and if you want default header
           start: getDate(-24 * 5),
           duration: 15 * 24 * 60 * 60 * 1000,
           progress: 85,
-          type: 'project',
+          type: 'project'
           //collapsed: true,
         },
         {
@@ -93,8 +94,8 @@ and if you want default header
           style: {
             base: {
               fill: '#1EBC61',
-              stroke: '#0EAC51',
-            },
+              stroke: '#0EAC51'
+            }
             /*'tree-row-bar': {
               fill: '#1EBC61',
               stroke: '#0EAC51'
@@ -102,7 +103,7 @@ and if you want default header
             'tree-row-bar-polygon': {
               stroke: '#0EAC51'
             }*/
-          },
+          }
         },
         {
           id: 3,
@@ -113,7 +114,7 @@ and if you want default header
           start: getDate(-24 * 3),
           duration: 2 * 24 * 60 * 60 * 1000,
           progress: 100,
-          type: 'task',
+          type: 'task'
         },
         {
           id: 4,
@@ -124,8 +125,8 @@ and if you want default header
           duration: 2 * 24 * 60 * 60 * 1000,
           progress: 50,
           type: 'task',
-          dependentOn: [3],
-        },
+          dependentOn: [3]
+        }
       ];
 
       let options = {
@@ -133,34 +134,34 @@ and if you want default header
         maxHeight: 300,
         title: {
           label: 'Your project title as html (link or whatever...)',
-          html: false,
+          html: false
         },
         row: {
-          height: 24,
+          height: 24
         },
         calendar: {
           hour: {
-            display: false,
-          },
+            display: false
+          }
         },
         chart: {
           progress: {
-            bar: false,
+            bar: false
           },
           expander: {
-            display: true,
-          },
+            display: true
+          }
         },
         taskList: {
           expander: {
-            straight: false,
+            straight: false
           },
           columns: [
             {
               id: 1,
               label: 'ID',
               value: 'id',
-              width: 40,
+              width: 40
             },
             {
               id: 2,
@@ -172,27 +173,27 @@ and if you want default header
               events: {
                 click({ data, column }) {
                   alert('description clicked!\n' + data.label);
-                },
-              },
+                }
+              }
             },
             {
               id: 3,
               label: 'Assigned to',
               value: 'user',
               width: 130,
-              html: true,
+              html: true
             },
             {
               id: 3,
               label: 'Start',
-              value: (task) => dayjs(task.start).format('YYYY-MM-DD'),
-              width: 78,
+              value: task => dayjs(task.start).format('YYYY-MM-DD'),
+              width: 78
             },
             {
               id: 4,
               label: 'Type',
               value: 'type',
-              width: 68,
+              width: 68
             },
             {
               id: 5,
@@ -202,16 +203,16 @@ and if you want default header
               style: {
                 'task-list-header-label': {
                   'text-align': 'center',
-                  width: '100%',
+                  width: '100%'
                 },
                 'task-list-item-value-container': {
                   'text-align': 'center',
-                  width: '100%',
-                },
-              },
-            },
-          ],
-        },
+                  width: '100%'
+                }
+              }
+            }
+          ]
+        }
         /*locale:{
           name: 'pl', // name String
           weekdays: 'Poniedziałek_Wtorek_Środa_Czwartek_Piątek_Sobota_Niedziela'.split('_'), // weekdays Array
@@ -244,19 +245,19 @@ and if you want default header
           'gantt-header': Header,
           'gantt-elastic': GanttElastic,
           'gantt-footer': {
-            template: `<span>this is a footer</span>`,
-          },
+            template: `<span>this is a footer</span>`
+          }
         },
         data: {
-          tasks: tasks.map((task) => Object.assign({}, task)),
+          tasks: tasks.map(task => Object.assign({}, task)),
           options,
           dynamicStyle: {
             'task-list-header-label': {
-              'font-weight': 'bold',
-            },
+              'font-weight': 'bold'
+            }
           },
-          destroy: false,
-        },
+          destroy: false
+        }
       });
 
       // gantt state which will be updated in realtime
@@ -264,16 +265,16 @@ and if you want default header
 
       // listen to 'gantt-elastic.ready' or 'gantt-elastic.mounted' event
       // to get the gantt state for real time modification
-      app.$on('gantt-elastic-ready', (ganttElasticInstance) => {
+      app.$on('gantt-elastic-ready', ganttElasticInstance => {
         ganttInstance = ganttElasticInstance;
 
-        ganttInstance.$on('tasks-changed', (tasks) => {
+        ganttInstance.$on('tasks-changed', tasks => {
           app.tasks = tasks;
         });
-        ganttInstance.$on('options-changed', (options) => {
+        ganttInstance.$on('options-changed', options => {
           app.options = options;
         });
-        ganttInstance.$on('dynamic-style-changed', (style) => {
+        ganttInstance.$on('dynamic-style-changed', style => {
           app.dynamicStyle = style;
         });
 
@@ -341,7 +342,7 @@ import App from './App.vue'; // your app that uses gantt-elastic from 'gantt-ela
 
 new Vue({
   el: '#app',
-  render: (h) => h(App),
+  render: h => h(App)
 });
 ```
 

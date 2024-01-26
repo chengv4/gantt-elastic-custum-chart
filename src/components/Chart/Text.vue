@@ -115,10 +115,10 @@ export default {
       if (this.textConfig.ellipsis) {
         const labelLength = this.task.label.length || 0;
         const textWidth = this.root.state.ctx.measureText(this.task.label).width;
-        let showLength = (this.task.width / textWidth) * labelLength - 4;
+        let showLength = Math.floor((this.task.width / textWidth) * labelLength);
 
         if (showLength < labelLength) {
-          return this.task.label.substring(0, showLength) + '...';
+          return this.task.label.substring(0, showLength - 2) + '...';
         }
       }
       return this.task.label;
