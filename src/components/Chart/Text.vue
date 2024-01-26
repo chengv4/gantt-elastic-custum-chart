@@ -10,7 +10,7 @@
   <svg
     class="gantt-elastic__chart-row-text-wrapper"
     :style="{ ...root.style['chart-row-text-wrapper'] }"
-    :x="task.x + task.width + root.state.options.chart.text.offset"
+    :x="textConfig.ellipsis ? task.x : task.x + task.width + root.state.options.chart.text.offset"
     :y="task.y - root.state.options.chart.grid.horizontal.gap"
     :width="getWidth"
     :height="getHeight"
@@ -19,28 +19,32 @@
       <div
         xmlns="http://www.w3.org/1999/xhtml"
         class="gantt-elastic__chart-row-text"
-        :style="{ ...root.style['chart-row-text'] }"
+        :style="{ ...root.style['chart-row-text'], backgroundColor: textConfig.ellipsis ? 'transparent' : task.color }"
       >
         <div
           class="gantt-elastic__chart-row-text-content gantt-elastic__chart-row-text-content--text"
           :style="{
             ...root.style['chart-row-text-content'],
             ...root.style['chart-row-text-content--text'],
-            ...contentStyle
+            ...contentStyle,
+            ...textConfig.style
           }"
           v-if="!html"
+          :title="task.label"
         >
-          <div>{{ task.label }}</div>
+          <div>{{ showLabel }}</div>
         </div>
         <div
           class="gantt-elastic__chart-row-text-content gantt-elastic__chart-row-text-content--html"
           :style="{
             ...root.style['chart-row-text-content'],
             ...root.style['chart-row-text-content--html'],
-            ...contentStyle
+            ...contentStyle,
+            ...textConfig.style
           }"
           v-if="html"
-          v-html="task.label"
+          :title="showLabel"
+          v-html="showLabel"
         ></div>
       </div>
     </foreignObject>
@@ -62,6 +66,9 @@ export default {
      * @returns {number}
      */
     getWidth() {
+      if (this.textConfig.ellipsis) {
+        return this.task.width;
+      }
       const textStyle = this.root.style['chart-row-text'];
       this.root.state.ctx.font = `${textStyle['font-weight']} ${textStyle['font-size']} ${textStyle['font-family']}`;
       const textWidth = this.root.state.ctx.measureText(this.task.label).width;
@@ -92,15 +99,31 @@ export default {
      * @returns {boolean}
      */
     html() {
-      const cols = this.root.state.options.taskList.columns;
-      for (let i = 0, len = cols.length; i < len; i++) {
-        const col = cols[i];
-        if (col.value === 'label' && typeof col.html !== 'undefined' && col.html) {
-          return true;
+      return Boolean(this.textConfig.html);
+    },
+    textConfig() {
+      return (
+        this.root.state.options.chart.text || {
+          style: {},
+          html: false,
+          ellipsis: false
+        }
+      );
+    },
+
+    showLabel() {
+      if (this.textConfig.ellipsis) {
+        const labelLength = this.task.label.length || 0;
+        const textWidth = this.root.state.ctx.measureText(this.task.label).width;
+        let showLength = (this.task.width / textWidth) * labelLength - 4;
+
+        if (showLength < labelLength) {
+          return this.task.label.substring(0, showLength) + '...';
         }
       }
-      return false;
+      return this.task.label;
     }
-  }
+  },
+  methods: {}
 };
 </script>

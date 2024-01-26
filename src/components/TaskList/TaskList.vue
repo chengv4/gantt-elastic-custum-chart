@@ -20,7 +20,7 @@
         ref="taskListItems"
         :style="{ ...root.style['task-list-items'], height: root.state.options.rowsHeight + 'px' }"
       >
-        <task-list-item v-for="task in root.visibleTasks" :key="task.id" :task="task"></task-list-item>
+        <task-list-item v-for="task in showTasks" :key="task.id" :task="task"></task-list-item>
       </div>
     </div>
   </div>
@@ -36,6 +36,11 @@ export default {
     TaskListItem
   },
   inject: ['root'],
+  computed: {
+    showTasks() {
+      return this.root.visibleTasks.filter(v => v.showTaskList !== false);
+    }
+  },
   data() {
     return {};
   },

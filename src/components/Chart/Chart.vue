@@ -24,14 +24,14 @@
       ref="chartGraphContainer"
       :style="{
         ...root.style['chart-graph-container'],
-        height: root.state.options.height - root.state.options.calendar.height + 'px'
+        height: root.state.options.height - root.state.options.calendar.height - hiddenRowsHeight + 'px'
       }"
     >
       <div
         :style="{
           ...root.style['chart-area'],
           width: root.state.options.width + 'px',
-          height: root.state.options.rowsHeight + 'px'
+          height: root.state.options.rowsHeight - hiddenRowsHeight + 'px'
         }"
       >
         <div
@@ -46,7 +46,7 @@
             x="0"
             y="0"
             :width="root.state.options.width + 'px'"
-            :height="root.state.options.allVisibleTasksHeight + 'px'"
+            :height="root.state.options.allVisibleTasksHeight - hiddenRowsHeight + 'px'"
             xmlns="http://www.w3.org/2000/svg"
           >
             <days-highlight></days-highlight>
@@ -106,12 +106,27 @@ export default {
 
   computed: {
     /**
+     * Get hidden rows height
+     *
+     * @returns {number}
+     */
+    hiddenRowsHeight() {
+      let h = 0;
+      this.root.visibleTasks.forEach(v => {
+        if (v.showTaskList === false) {
+          h += v.height + 14 || 0;
+        }
+      });
+      return h;
+    },
+    /**
      * Get view box
      *
      * @returns {string}
      */
     getViewBox() {
-      return `0 0 ${this.root.state.options.width} ${this.root.state.options.allVisibleTasksHeight}`;
+      return `0 0 ${this.root.state.options.width} ${this.root.state.options.allVisibleTasksHeight -
+        this.hiddenRowsHeight}`;
     }
   }
 };

@@ -10,14 +10,14 @@
   <div class="gantt-elastic__main-view" :style="{ ...root.style['main-view'] }">
     <div
       class="gantt-elastic__main-container-wrapper"
-      :style="{ ...root.style['main-container-wrapper'], height: root.state.options.height + 'px' }"
+      :style="{ ...root.style['main-container-wrapper'], height: root.state.options.height - hiddenRowsHeight + 'px' }"
     >
       <div
         class="gantt-elastic__main-container"
         :style="{
           ...root.style['main-container'],
           width: root.state.options.clientWidth + 'px',
-          height: root.state.options.height + 'px'
+          height: root.state.options.height - hiddenRowsHeight + 'px'
         }"
         ref="mainView"
       >
@@ -33,7 +33,7 @@
             :style="{
               ...root.style['task-list-container'],
               width: root.state.options.taskList.finalWidth + 'px',
-              height: root.state.options.height + 'px'
+              height: root.state.options.height - hiddenRowsHeight + 'px'
             }"
             v-show="root.state.options.taskList.display"
           >
@@ -136,6 +136,20 @@ export default {
   },
   computed: {
     /**
+     * Get hidden rows height
+     *
+     * @returns {number}
+     */
+    hiddenRowsHeight() {
+      let h = 0;
+      this.root.visibleTasks.forEach(v => {
+        if (v.showTaskList === false) {
+          h += v.height + 14 || 0;
+        }
+      });
+      return h;
+    },
+    /**
      * Get margin left
      *
      * @returns {string}
@@ -155,8 +169,9 @@ export default {
     verticalStyle() {
       return {
         width: this.root.state.options.scrollBarHeight + 'px',
-        height: this.root.state.options.rowsHeight + 'px',
-        'margin-top': this.root.state.options.calendar.height + this.root.state.options.calendar.gap + 'px'
+        height: this.root.state.options.rowsHeight - this.hiddenRowsHeight + 'px',
+        'margin-top': this.root.state.options.calendar.height + this.root.state.options.calendar.gap + 'px',
+        overflowY: 'hidden'
       };
     },
 
@@ -167,11 +182,10 @@ export default {
      */
     getViewBox() {
       if (this.root.state.options.clientWidth) {
-        return `0 0 ${this.root.state.options.clientWidth - this.root.state.options.scrollBarHeight} ${
-          this.root.state.options.height
-        }`;
+        return `0 0 ${this.root.state.options.clientWidth - this.root.state.options.scrollBarHeight} ${this.root.state
+          .options.height - this.hiddenRowsHeight}`;
       }
-      return `0 0 0 ${this.root.state.options.height}`;
+      return `0 0 0 ${this.root.state.options.height - this.hiddenRowsHeight}`;
     }
   },
   methods: {

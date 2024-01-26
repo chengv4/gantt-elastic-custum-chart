@@ -56,7 +56,8 @@ function getOptions(userOptions) {
       progress: 'progress',
       type: 'type',
       style: 'style',
-      collapsed: 'collapsed'
+      collapsed: 'collapsed',
+      showTaskList: 'showTaskList'
     },
     width: 0,
     height: 0,
@@ -593,7 +594,8 @@ const GanttElastic = {
           progress: task[options.taskMapping.progress],
           type: task[options.taskMapping.type],
           style: task[options.taskMapping.style],
-          collapsed: task[options.taskMapping.collapsed]
+          collapsed: task[options.taskMapping.collapsed],
+          showTaskList: task[options.taskMapping.showTaskList]
         };
       }
       return tasks;
@@ -1429,8 +1431,21 @@ const GanttElastic = {
         }
         task.height = this.state.options.row.height;
         task.x = this.timeToPixelOffsetX(task.startTime);
+        /* Add multiple displays in one row  */
+        let realIndex = index;
+        if (task.showTaskList === false) {
+          const indx = visibleTasks
+            .filter(v => v.showTaskList !== false)
+            .map(v => v.id)
+            .indexOf(task.parentId);
+          realIndex = indx;
+        } else {
+          const indx = visibleTasks.slice(0, index).filter(v => v.showTaskList === false).length;
+
+          realIndex = index - indx;
+        }
         task.y =
-          (this.state.options.row.height + this.state.options.chart.grid.horizontal.gap * 2) * index +
+          (this.state.options.row.height + this.state.options.chart.grid.horizontal.gap * 2) * realIndex +
           this.state.options.chart.grid.horizontal.gap;
       }
       return visibleTasks;
@@ -1506,7 +1521,10 @@ const GanttElastic = {
     this.state.unwatchOutputTasks = this.$watch(
       'outputTasks',
       tasks => {
-        this.$emit('tasks-changed', tasks.map(task => task));
+        this.$emit(
+          'tasks-changed',
+          tasks.map(task => task)
+        );
       },
       { deep: true }
     );
