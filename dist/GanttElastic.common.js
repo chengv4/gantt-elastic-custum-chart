@@ -104,7 +104,7 @@ if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
 var add = __webpack_require__(9).default
-var update = add("2a2a4462", content, false, {});
+var update = add("5544df69", content, false, {});
 // Hot Module Replacement
 if(false) {}
 
@@ -1081,8 +1081,8 @@ module.exports = g;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_GanttElastic_vue_vue_type_style_index_0_id_7af2114a_prod_lang_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_GanttElastic_vue_vue_type_style_index_0_id_7af2114a_prod_lang_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_GanttElastic_vue_vue_type_style_index_0_id_7af2114a_prod_lang_css__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_GanttElastic_vue_vue_type_style_index_0_id_6f33626f_prod_lang_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_GanttElastic_vue_vue_type_style_index_0_id_6f33626f_prod_lang_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_GanttElastic_vue_vue_type_style_index_0_id_6f33626f_prod_lang_css__WEBPACK_IMPORTED_MODULE_0__);
 /* unused harmony reexport * */
 
 
@@ -1195,7 +1195,7 @@ __webpack_require__.d(__webpack_exports__, "mergeDeep", function() { return /* r
 __webpack_require__.d(__webpack_exports__, "mergeDeepReactive", function() { return /* reexport */ mergeDeepReactive; });
 __webpack_require__.d(__webpack_exports__, "notEqualDeep", function() { return /* reexport */ notEqualDeep; });
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--5!./node_modules/vue-loader/lib??vue-loader-options!./src/GanttElastic.vue?vue&type=template&id=7af2114a
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--5!./node_modules/vue-loader/lib??vue-loader-options!./src/GanttElastic.vue?vue&type=template&id=6f33626f
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c,
@@ -1217,7 +1217,7 @@ var staticRenderFns = []
 render._withStripped = true
 
 
-// CONCATENATED MODULE: ./src/GanttElastic.vue?vue&type=template&id=7af2114a
+// CONCATENATED MODULE: ./src/GanttElastic.vue?vue&type=template&id=6f33626f
 
 // EXTERNAL MODULE: external "Vue"
 var external_Vue_ = __webpack_require__(2);
@@ -1227,8 +1227,8 @@ var external_Vue_default = /*#__PURE__*/__webpack_require__.n(external_Vue_);
 var dayjs_min = __webpack_require__(0);
 var dayjs_min_default = /*#__PURE__*/__webpack_require__.n(dayjs_min);
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--5!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MainView.vue?vue&type=template&id=0cae1d4f
-var MainViewvue_type_template_id_0cae1d4f_render = function render() {
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--5!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MainView.vue?vue&type=template&id=8a29f22c
+var MainViewvue_type_template_id_8a29f22c_render = function render() {
   var _vm = this,
     _c = _vm._self._c
   return _c(
@@ -1324,6 +1324,34 @@ var MainViewvue_type_template_id_0cae1d4f_render = function render() {
                     [_c("chart")],
                     1
                   ),
+                  _vm._v(" "),
+                  _vm.fixedCols.length
+                    ? _c(
+                        "div",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.root.state.options.taskList.display,
+                              expression: "root.state.options.taskList.display",
+                            },
+                          ],
+                          ref: "taskList",
+                          staticClass: "gantt-elastic__task-list-container",
+                          style: {
+                            ..._vm.root.style["task-list-container"],
+                            width: _vm.getFixedWidth,
+                            height:
+                              _vm.root.state.options.height -
+                              _vm.hiddenRowsHeight +
+                              "px",
+                          },
+                        },
+                        [_c("task-list-fixed")],
+                        1
+                      )
+                    : _vm._e(),
                 ]
               ),
             ]
@@ -1365,6 +1393,7 @@ var MainViewvue_type_template_id_0cae1d4f_render = function render() {
             ..._vm.root.style["chart-scroll-container"],
             ..._vm.root.style["chart-scroll-container--horizontal"],
             marginLeft: _vm.getMarginLeft,
+            marginRight: _vm.getMarginRight,
           },
           on: { scroll: _vm.onHorizontalScroll },
         },
@@ -1381,11 +1410,11 @@ var MainViewvue_type_template_id_0cae1d4f_render = function render() {
     ]
   )
 }
-var MainViewvue_type_template_id_0cae1d4f_staticRenderFns = []
-MainViewvue_type_template_id_0cae1d4f_render._withStripped = true
+var MainViewvue_type_template_id_8a29f22c_staticRenderFns = []
+MainViewvue_type_template_id_8a29f22c_render._withStripped = true
 
 
-// CONCATENATED MODULE: ./src/components/MainView.vue?vue&type=template&id=0cae1d4f
+// CONCATENATED MODULE: ./src/components/MainView.vue?vue&type=template&id=8a29f22c
 
 // CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--5!./node_modules/vue-loader/lib??vue-loader-options!./src/components/TaskList/TaskList.vue?vue&type=template&id=68b1933c
 var TaskListvue_type_template_id_68b1933c_render = function render() {
@@ -1976,8 +2005,8 @@ var TaskListHeader_component = normalizeComponent(
 )
 
 /* harmony default export */ var TaskListHeader = (TaskListHeader_component.exports);
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--5!./node_modules/vue-loader/lib??vue-loader-options!./src/components/TaskList/TaskListItem.vue?vue&type=template&id=9ddbf498
-var TaskListItemvue_type_template_id_9ddbf498_render = function render() {
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--5!./node_modules/vue-loader/lib??vue-loader-options!./src/components/TaskList/TaskListItem.vue?vue&type=template&id=7263ea19
+var TaskListItemvue_type_template_id_7263ea19_render = function render() {
   var _vm = this,
     _c = _vm._self._c
   return _c(
@@ -2007,14 +2036,14 @@ var TaskListItemvue_type_template_id_9ddbf498_render = function render() {
     1
   )
 }
-var TaskListItemvue_type_template_id_9ddbf498_staticRenderFns = []
-TaskListItemvue_type_template_id_9ddbf498_render._withStripped = true
+var TaskListItemvue_type_template_id_7263ea19_staticRenderFns = []
+TaskListItemvue_type_template_id_7263ea19_render._withStripped = true
 
 
-// CONCATENATED MODULE: ./src/components/TaskList/TaskListItem.vue?vue&type=template&id=9ddbf498
+// CONCATENATED MODULE: ./src/components/TaskList/TaskListItem.vue?vue&type=template&id=7263ea19
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--5!./node_modules/vue-loader/lib??vue-loader-options!./src/components/TaskList/ItemColumn.vue?vue&type=template&id=76ce2b5b
-var ItemColumnvue_type_template_id_76ce2b5b_render = function render() {
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--5!./node_modules/vue-loader/lib??vue-loader-options!./src/components/TaskList/ItemColumn.vue?vue&type=template&id=fe649054
+var ItemColumnvue_type_template_id_fe649054_render = function render() {
   var _vm = this,
     _c = _vm._self._c
   return _c(
@@ -2040,7 +2069,7 @@ var ItemColumnvue_type_template_id_76ce2b5b_render = function render() {
               style: _vm.containerStyle,
             },
             [
-              !_vm.html
+              !_vm.html && !_vm.column.render
                 ? _c(
                     "div",
                     {
@@ -2084,6 +2113,12 @@ var ItemColumnvue_type_template_id_76ce2b5b_render = function render() {
                     },
                     [_vm._v("\n        " + _vm._s(_vm.value) + "\n      ")]
                   )
+                : _vm.column.render
+                ? _c("Render", {
+                    attrs: {
+                      render: () => _vm.column.render(_vm.value, _vm.task),
+                    },
+                  })
                 : _c("div", {
                     staticClass: "gantt-elastic__task-list-item-value",
                     style: _vm.valueStyle,
@@ -2124,7 +2159,8 @@ var ItemColumnvue_type_template_id_76ce2b5b_render = function render() {
                       },
                     },
                   }),
-            ]
+            ],
+            1
           ),
         ],
         2
@@ -2132,18 +2168,57 @@ var ItemColumnvue_type_template_id_76ce2b5b_render = function render() {
     ]
   )
 }
-var ItemColumnvue_type_template_id_76ce2b5b_staticRenderFns = []
-ItemColumnvue_type_template_id_76ce2b5b_render._withStripped = true
+var ItemColumnvue_type_template_id_fe649054_staticRenderFns = []
+ItemColumnvue_type_template_id_fe649054_render._withStripped = true
 
 
-// CONCATENATED MODULE: ./src/components/TaskList/ItemColumn.vue?vue&type=template&id=76ce2b5b
+// CONCATENATED MODULE: ./src/components/TaskList/ItemColumn.vue?vue&type=template&id=fe649054
 
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib??vue-loader-options!./src/components/Render/index.vue?vue&type=script&lang=js
+
+/* harmony default export */ var Rendervue_type_script_lang_js = ({
+  name: 'Render',
+  functional: true,
+  props: {
+    render: Function
+  },
+  render(createElement, context) {
+    return context.props.render(createElement);
+  }
+});
+
+// CONCATENATED MODULE: ./src/components/Render/index.vue?vue&type=script&lang=js
+ /* harmony default export */ var components_Rendervue_type_script_lang_js = (Rendervue_type_script_lang_js); 
+// CONCATENATED MODULE: ./src/components/Render/index.vue
+var Render_render, Render_staticRenderFns
+
+
+
+
+/* normalize component */
+
+var Render_component = normalizeComponent(
+  components_Rendervue_type_script_lang_js,
+  Render_render,
+  Render_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var Render = (Render_component.exports);
 // CONCATENATED MODULE: ./node_modules/vue-loader/lib??vue-loader-options!./src/components/TaskList/ItemColumn.vue?vue&type=script&lang=js
+
 
 /* harmony default export */ var ItemColumnvue_type_script_lang_js = ({
   name: 'ItemColumn',
   inject: ['root'],
   props: ['column', 'task'],
+  components: {
+    Render: Render
+  },
   data() {
     return {};
   },
@@ -2227,8 +2302,8 @@ ItemColumnvue_type_template_id_76ce2b5b_render._withStripped = true
 
 var ItemColumn_component = normalizeComponent(
   TaskList_ItemColumnvue_type_script_lang_js,
-  ItemColumnvue_type_template_id_76ce2b5b_render,
-  ItemColumnvue_type_template_id_76ce2b5b_staticRenderFns,
+  ItemColumnvue_type_template_id_fe649054_render,
+  ItemColumnvue_type_template_id_fe649054_staticRenderFns,
   false,
   null,
   null,
@@ -2255,7 +2330,7 @@ var ItemColumn_component = normalizeComponent(
   },
   computed: {
     columns() {
-      return this.root.state.options.taskList.columns;
+      return this.root.state.options.taskList.columns.filter(v => v.fixed !== 'right');
     }
   }
 });
@@ -2272,8 +2347,8 @@ var ItemColumn_component = normalizeComponent(
 
 var TaskListItem_component = normalizeComponent(
   TaskList_TaskListItemvue_type_script_lang_js,
-  TaskListItemvue_type_template_id_9ddbf498_render,
-  TaskListItemvue_type_template_id_9ddbf498_staticRenderFns,
+  TaskListItemvue_type_template_id_7263ea19_render,
+  TaskListItemvue_type_template_id_7263ea19_staticRenderFns,
   false,
   null,
   null,
@@ -2334,6 +2409,585 @@ var TaskList_component = normalizeComponent(
 )
 
 /* harmony default export */ var TaskList = (TaskList_component.exports);
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--5!./node_modules/vue-loader/lib??vue-loader-options!./src/components/TaskListFixed/TaskList.vue?vue&type=template&id=630fdee0
+var TaskListvue_type_template_id_630fdee0_render = function render() {
+  var _vm = this,
+    _c = _vm._self._c
+  return _c(
+    "div",
+    {
+      directives: [
+        {
+          name: "show",
+          rawName: "v-show",
+          value: _vm.root.state.options.taskList.display,
+          expression: "root.state.options.taskList.display",
+        },
+      ],
+      ref: "taskListWrapper",
+      staticClass: "gantt-elastic__task-list-wrapper",
+      style: {
+        ..._vm.root.style["task-list-wrapper"],
+        width: "100%",
+        height: "100%",
+      },
+    },
+    [
+      _c(
+        "div",
+        {
+          ref: "taskList",
+          staticClass: "gantt-elastic__task-list",
+          style: { ..._vm.root.style["task-list"] },
+        },
+        [
+          _c("task-list-header"),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              ref: "taskListItems",
+              staticClass: "gantt-elastic__task-list-items",
+              style: {
+                ..._vm.root.style["task-list-items"],
+                height: _vm.root.state.options.rowsHeight + "px",
+              },
+            },
+            _vm._l(_vm.showTasks, function (task) {
+              return _c("task-list-item", {
+                key: task.id,
+                attrs: { task: task },
+              })
+            }),
+            1
+          ),
+        ],
+        1
+      ),
+    ]
+  )
+}
+var TaskListvue_type_template_id_630fdee0_staticRenderFns = []
+TaskListvue_type_template_id_630fdee0_render._withStripped = true
+
+
+// CONCATENATED MODULE: ./src/components/TaskListFixed/TaskList.vue?vue&type=template&id=630fdee0
+
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--5!./node_modules/vue-loader/lib??vue-loader-options!./src/components/TaskListFixed/TaskListHeader.vue?vue&type=template&id=63b6d48a
+var TaskListHeadervue_type_template_id_63b6d48a_render = function render() {
+  var _vm = this,
+    _c = _vm._self._c
+  return _c(
+    "div",
+    {
+      staticClass: "gantt-elastic__task-list-header",
+      style: {
+        ..._vm.root.style["task-list-header"],
+        height: `${_vm.root.state.options.calendar.height}px`,
+        "margin-bottom": `${_vm.root.state.options.calendar.gap}px`,
+      },
+    },
+    _vm._l(_vm.columns, function (column) {
+      return _c(
+        "div",
+        {
+          key: column._id,
+          staticClass: "gantt-elastic__task-list-header-column",
+          style: {
+            ..._vm.root.style["task-list-header-column"],
+            ...column.style["task-list-header-column"],
+            ..._vm.getStyle(column),
+          },
+        },
+        [
+          column.expander
+            ? _c("task-list-expander", {
+                attrs: {
+                  tasks: _vm.collapsible,
+                  options: _vm.root.state.options.taskList.expander,
+                },
+              })
+            : _vm._e(),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "gantt-elastic__task-list-header-label",
+              style: {
+                ..._vm.root.style["task-list-header-label"],
+                ...column.style["task-list-header-label"],
+              },
+              attrs: { column: column },
+            },
+            [_vm._v("\n      " + _vm._s(column.label) + "\n    ")]
+          ),
+        ],
+        1
+      )
+    }),
+    0
+  )
+}
+var TaskListHeadervue_type_template_id_63b6d48a_staticRenderFns = []
+TaskListHeadervue_type_template_id_63b6d48a_render._withStripped = true
+
+
+// CONCATENATED MODULE: ./src/components/TaskListFixed/TaskListHeader.vue?vue&type=template&id=63b6d48a
+
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib??vue-loader-options!./src/components/TaskListFixed/TaskListHeader.vue?vue&type=script&lang=js
+
+
+/* harmony default export */ var TaskListFixed_TaskListHeadervue_type_script_lang_js = ({
+  name: 'TaskListHeader',
+  components: {
+    TaskListExpander: Expander
+  },
+
+  inject: ['root'],
+
+  data() {
+    return {
+      resizer: {
+        moving: false,
+        x: 0
+      }
+    };
+  },
+
+  computed: {
+    /**
+     * Is this row collapsible?
+     *
+     * @returns {bool}
+     */
+    collapsible() {
+      return this.root.state.tasks.filter(task => task.allChildren.length > 0);
+    },
+
+    /**
+     * Get columns
+     *
+     * @returns {array}
+     */
+    columns() {
+      return this.root.state.options.taskList.columns.filter(v => v.fixed === 'right');
+    }
+  },
+
+  methods: {
+    /**
+     * Get style
+     *
+     * @returns {object}
+     */
+    getStyle(column) {
+      return {
+        width: column.finalWidth + 'px'
+      };
+    }
+  },
+
+  /**
+   * Created
+   */
+  created() {},
+
+  /**
+   * Before destroy event - clear all event listeners
+   */
+  beforeDestroy() {}
+});
+
+// CONCATENATED MODULE: ./src/components/TaskListFixed/TaskListHeader.vue?vue&type=script&lang=js
+ /* harmony default export */ var components_TaskListFixed_TaskListHeadervue_type_script_lang_js = (TaskListFixed_TaskListHeadervue_type_script_lang_js); 
+// CONCATENATED MODULE: ./src/components/TaskListFixed/TaskListHeader.vue
+
+
+
+
+
+/* normalize component */
+
+var TaskListFixed_TaskListHeader_component = normalizeComponent(
+  components_TaskListFixed_TaskListHeadervue_type_script_lang_js,
+  TaskListHeadervue_type_template_id_63b6d48a_render,
+  TaskListHeadervue_type_template_id_63b6d48a_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var TaskListFixed_TaskListHeader = (TaskListFixed_TaskListHeader_component.exports);
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--5!./node_modules/vue-loader/lib??vue-loader-options!./src/components/TaskListFixed/TaskListItem.vue?vue&type=template&id=6b0c5c77
+var TaskListItemvue_type_template_id_6b0c5c77_render = function render() {
+  var _vm = this,
+    _c = _vm._self._c
+  return _c(
+    "div",
+    {
+      staticClass: "gantt-elastic__task-list-item",
+      style: { ..._vm.root.style["task-list-item"] },
+    },
+    _vm._l(_vm.columns, function (column) {
+      return _c(
+        "item-column",
+        { key: column._id, attrs: { column: column, task: _vm.task } },
+        [
+          column.expander
+            ? _c("task-list-expander", {
+                attrs: {
+                  tasks: [_vm.task],
+                  options: _vm.root.state.options.taskList.expander,
+                  type: "taskList",
+                },
+              })
+            : _vm._e(),
+        ],
+        1
+      )
+    }),
+    1
+  )
+}
+var TaskListItemvue_type_template_id_6b0c5c77_staticRenderFns = []
+TaskListItemvue_type_template_id_6b0c5c77_render._withStripped = true
+
+
+// CONCATENATED MODULE: ./src/components/TaskListFixed/TaskListItem.vue?vue&type=template&id=6b0c5c77
+
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--5!./node_modules/vue-loader/lib??vue-loader-options!./src/components/TaskListFixed/ItemColumn.vue?vue&type=template&id=7309e924
+var ItemColumnvue_type_template_id_7309e924_render = function render() {
+  var _vm = this,
+    _c = _vm._self._c
+  return _c(
+    "div",
+    {
+      staticClass: "gantt-elastic__task-list-item-column",
+      style: _vm.itemColumnStyle,
+    },
+    [
+      _c(
+        "div",
+        {
+          staticClass: "gantt-elastic__task-list-item-value-wrapper",
+          style: _vm.wrapperStyle,
+        },
+        [
+          _vm._t("default"),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "gantt-elastic__task-list-item-value-container",
+              style: _vm.containerStyle,
+            },
+            [
+              !_vm.html && !_vm.column.render
+                ? _c(
+                    "div",
+                    {
+                      staticClass: "gantt-elastic__task-list-item-value",
+                      style: _vm.valueStyle,
+                      on: {
+                        click: function ($event) {
+                          return _vm.emitEvent("click", $event)
+                        },
+                        mouseenter: function ($event) {
+                          return _vm.emitEvent("mouseenter", $event)
+                        },
+                        mouseover: function ($event) {
+                          return _vm.emitEvent("mouseover", $event)
+                        },
+                        mouseout: function ($event) {
+                          return _vm.emitEvent("mouseout", $event)
+                        },
+                        mousemove: function ($event) {
+                          return _vm.emitEvent("mousemove", $event)
+                        },
+                        mousedown: function ($event) {
+                          return _vm.emitEvent("mousedown", $event)
+                        },
+                        mouseup: function ($event) {
+                          return _vm.emitEvent("mouseup", $event)
+                        },
+                        mousewheel: function ($event) {
+                          return _vm.emitEvent("mousewheel", $event)
+                        },
+                        touchstart: function ($event) {
+                          return _vm.emitEvent("touchstart", $event)
+                        },
+                        touchmove: function ($event) {
+                          return _vm.emitEvent("touchmove", $event)
+                        },
+                        touchend: function ($event) {
+                          return _vm.emitEvent("touchend", $event)
+                        },
+                      },
+                    },
+                    [_vm._v("\n        " + _vm._s(_vm.value) + "\n      ")]
+                  )
+                : _vm.column.render
+                ? _c("Render", {
+                    attrs: {
+                      render: () => _vm.column.render(_vm.value, _vm.task),
+                    },
+                  })
+                : _c("div", {
+                    staticClass: "gantt-elastic__task-list-item-value",
+                    style: _vm.valueStyle,
+                    domProps: { innerHTML: _vm._s(_vm.value) },
+                    on: {
+                      click: function ($event) {
+                        return _vm.emitEvent("click", $event)
+                      },
+                      mouseenter: function ($event) {
+                        return _vm.emitEvent("mouseenter", $event)
+                      },
+                      mouseover: function ($event) {
+                        return _vm.emitEvent("mouseover", $event)
+                      },
+                      mouseout: function ($event) {
+                        return _vm.emitEvent("mouseout", $event)
+                      },
+                      mousemove: function ($event) {
+                        return _vm.emitEvent("mousemove", $event)
+                      },
+                      mousedown: function ($event) {
+                        return _vm.emitEvent("mousedown", $event)
+                      },
+                      mouseup: function ($event) {
+                        return _vm.emitEvent("mouseup", $event)
+                      },
+                      mousewheel: function ($event) {
+                        return _vm.emitEvent("mousewheel", $event)
+                      },
+                      touchstart: function ($event) {
+                        return _vm.emitEvent("touchstart", $event)
+                      },
+                      touchmove: function ($event) {
+                        return _vm.emitEvent("touchmove", $event)
+                      },
+                      touchend: function ($event) {
+                        return _vm.emitEvent("touchend", $event)
+                      },
+                    },
+                  }),
+            ],
+            1
+          ),
+        ],
+        2
+      ),
+    ]
+  )
+}
+var ItemColumnvue_type_template_id_7309e924_staticRenderFns = []
+ItemColumnvue_type_template_id_7309e924_render._withStripped = true
+
+
+// CONCATENATED MODULE: ./src/components/TaskListFixed/ItemColumn.vue?vue&type=template&id=7309e924
+
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib??vue-loader-options!./src/components/TaskListFixed/ItemColumn.vue?vue&type=script&lang=js
+
+
+/* harmony default export */ var TaskListFixed_ItemColumnvue_type_script_lang_js = ({
+  name: 'ItemColumn',
+  inject: ['root'],
+  props: ['column', 'task'],
+  components: {
+    Render: Render
+  },
+  data() {
+    return {};
+  },
+  methods: {
+    /**
+     * Emit event
+     *
+     * @param {String} eventName
+     * @param {Event} event
+     */
+    emitEvent(eventName, event) {
+      if (typeof this.column.events !== 'undefined' && typeof this.column.events[eventName] === 'function') {
+        this.column.events[eventName]({ event, data: this.task, column: this.column });
+      }
+      this.root.$emit(`taskList-${this.task.type}-${eventName}`, { event, data: this.task, column: this.column });
+    }
+  },
+  computed: {
+    /**
+     * Should we display html or just text?
+     *
+     * @returns {boolean}
+     */
+    html() {
+      if (typeof this.column.html !== 'undefined' && this.column.html === true) {
+        return true;
+      }
+      return false;
+    },
+    /**
+     * Get column value
+     *
+     * @returns {any|string}
+     */
+    value() {
+      if (typeof this.column.value === 'function') {
+        return this.column.value(this.task);
+      }
+      return this.task[this.column.value];
+    },
+
+    itemColumnStyle() {
+      return {
+        ...this.root.style['task-list-item-column'],
+        ...this.column.style['task-list-item-column'],
+        width: this.column.finalWidth + 'px',
+        height: this.column.height + 'px'
+      };
+    },
+
+    wrapperStyle() {
+      return {
+        ...this.root.style['task-list-item-value-wrapper'],
+        ...this.column.style['task-list-item-value-wrapper']
+      };
+    },
+
+    containerStyle() {
+      return {
+        ...this.root.style['task-list-item-value-container'],
+        ...this.column.style['task-list-item-value-container']
+      };
+    },
+
+    valueStyle() {
+      return { ...this.root.style['task-list-item-value'], ...this.column.style['task-list-item-value'] };
+    }
+  }
+});
+
+// CONCATENATED MODULE: ./src/components/TaskListFixed/ItemColumn.vue?vue&type=script&lang=js
+ /* harmony default export */ var components_TaskListFixed_ItemColumnvue_type_script_lang_js = (TaskListFixed_ItemColumnvue_type_script_lang_js); 
+// CONCATENATED MODULE: ./src/components/TaskListFixed/ItemColumn.vue
+
+
+
+
+
+/* normalize component */
+
+var TaskListFixed_ItemColumn_component = normalizeComponent(
+  components_TaskListFixed_ItemColumnvue_type_script_lang_js,
+  ItemColumnvue_type_template_id_7309e924_render,
+  ItemColumnvue_type_template_id_7309e924_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var TaskListFixed_ItemColumn = (TaskListFixed_ItemColumn_component.exports);
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib??vue-loader-options!./src/components/TaskListFixed/TaskListItem.vue?vue&type=script&lang=js
+
+
+
+
+/* harmony default export */ var TaskListFixed_TaskListItemvue_type_script_lang_js = ({
+  name: 'TaskListItem',
+  components: {
+    TaskListExpander: Expander,
+    ItemColumn: TaskListFixed_ItemColumn
+  },
+  inject: ['root'],
+  props: ['task'],
+  data() {
+    return {};
+  },
+  computed: {
+    columns() {
+      return this.root.state.options.taskList.columns.filter(v => v.fixed === 'right');
+    }
+  }
+});
+
+// CONCATENATED MODULE: ./src/components/TaskListFixed/TaskListItem.vue?vue&type=script&lang=js
+ /* harmony default export */ var components_TaskListFixed_TaskListItemvue_type_script_lang_js = (TaskListFixed_TaskListItemvue_type_script_lang_js); 
+// CONCATENATED MODULE: ./src/components/TaskListFixed/TaskListItem.vue
+
+
+
+
+
+/* normalize component */
+
+var TaskListFixed_TaskListItem_component = normalizeComponent(
+  components_TaskListFixed_TaskListItemvue_type_script_lang_js,
+  TaskListItemvue_type_template_id_6b0c5c77_render,
+  TaskListItemvue_type_template_id_6b0c5c77_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var TaskListFixed_TaskListItem = (TaskListFixed_TaskListItem_component.exports);
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib??vue-loader-options!./src/components/TaskListFixed/TaskList.vue?vue&type=script&lang=js
+
+
+
+/* harmony default export */ var TaskListFixed_TaskListvue_type_script_lang_js = ({
+  name: 'TaskList',
+  components: {
+    TaskListHeader: TaskListFixed_TaskListHeader,
+    TaskListItem: TaskListFixed_TaskListItem
+  },
+  inject: ['root'],
+  computed: {
+    showTasks() {
+      return this.root.visibleTasks.filter(v => v.showTaskList !== false);
+    }
+  },
+  data() {
+    return {};
+  },
+
+  /**
+   * Mounted
+   */
+  mounted() {
+    this.root.state.refs.taskListWrapper = this.$refs.taskListWrapper;
+    this.root.state.refs.taskList = this.$refs.taskList;
+    this.root.state.refs.taskListItems = this.$refs.taskListItems;
+  }
+});
+
+// CONCATENATED MODULE: ./src/components/TaskListFixed/TaskList.vue?vue&type=script&lang=js
+ /* harmony default export */ var components_TaskListFixed_TaskListvue_type_script_lang_js = (TaskListFixed_TaskListvue_type_script_lang_js); 
+// CONCATENATED MODULE: ./src/components/TaskListFixed/TaskList.vue
+
+
+
+
+
+/* normalize component */
+
+var TaskListFixed_TaskList_component = normalizeComponent(
+  components_TaskListFixed_TaskListvue_type_script_lang_js,
+  TaskListvue_type_template_id_630fdee0_render,
+  TaskListvue_type_template_id_630fdee0_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var TaskListFixed_TaskList = (TaskListFixed_TaskList_component.exports);
 // CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--5!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Chart/Chart.vue?vue&type=template&id=444b686e
 var Chartvue_type_template_id_444b686e_render = function render() {
   var _vm = this,
@@ -4641,13 +5295,15 @@ var Chart_component = normalizeComponent(
 
 
 
+
 let ignoreScrollEvents = false;
 
 /* harmony default export */ var MainViewvue_type_script_lang_js = ({
   name: 'MainView',
   components: {
     TaskList: TaskList,
-    Chart: Chart
+    Chart: Chart,
+    TaskListFixed: TaskListFixed_TaskList
   },
   inject: ['root'],
   data() {
@@ -4706,9 +5362,48 @@ let ignoreScrollEvents = false;
       if (!this.root.state.options.taskList.display) {
         return '0px';
       }
-      return this.root.state.options.taskList.finalWidth + 'px';
-    },
+      let sumFixed = 0;
 
+      if (this.fixedCols.length) {
+        sumFixed = this.fixedCols
+          .map(v => v.finalWidth)
+          .filter(v => v && !Number.isNaN(v))
+          .reduce((a, b) => a + b);
+      }
+      return this.root.state.options.taskList.finalWidth - sumFixed + 'px';
+    },
+    fixedCols() {
+      return this.root.state.options.taskList.columns.filter(v => v.fixed === 'right');
+    },
+    /**
+     * Get margin right
+     *
+     * @returns {string}
+     */
+    getMarginRight() {
+      if (!this.root.state.options.taskList.display) {
+        return '0px';
+      }
+      if (this.fixedCols.length) {
+        const sum = this.fixedCols
+          .map(v => v.finalWidth)
+          .filter(v => v && !Number.isNaN(v))
+          .reduce((a, b) => a + b);
+        return sum + 'px';
+      }
+      return '0px';
+    },
+    getFixedWidth() {
+      let sumFixed = 0;
+      if (this.fixedCols.length) {
+        sumFixed = this.fixedCols
+          .map(v => v.finalWidth)
+          .filter(v => v && !Number.isNaN(v))
+          .reduce((a, b) => a + b);
+      }
+      // this.root.state.options.taskList.finalWidth
+      return sumFixed + 'px';
+    },
     /**
      * Get vertical style
      *
@@ -4861,8 +5556,8 @@ let ignoreScrollEvents = false;
 
 var MainView_component = normalizeComponent(
   components_MainViewvue_type_script_lang_js,
-  MainViewvue_type_template_id_0cae1d4f_render,
-  MainViewvue_type_template_id_0cae1d4f_staticRenderFns,
+  MainViewvue_type_template_id_8a29f22c_render,
+  MainViewvue_type_template_id_8a29f22c_staticRenderFns,
   false,
   null,
   null,
@@ -6640,7 +7335,7 @@ const GanttElastic = {
      */
     getTaskListColumns() {
       this.calculateTaskListColumnsDimensions();
-      return this.state.options.taskList.columns;
+      return this.state.options.taskList.columns.filter(v => !v.fixed);
     },
 
     /**
@@ -6788,8 +7483,8 @@ const GanttElastic = {
 
 // CONCATENATED MODULE: ./src/GanttElastic.vue?vue&type=script&lang=js
  /* harmony default export */ var src_GanttElasticvue_type_script_lang_js = (GanttElasticvue_type_script_lang_js); 
-// EXTERNAL MODULE: ./src/GanttElastic.vue?vue&type=style&index=0&id=7af2114a&prod&lang=css
-var GanttElasticvue_type_style_index_0_id_7af2114a_prod_lang_css = __webpack_require__(5);
+// EXTERNAL MODULE: ./src/GanttElastic.vue?vue&type=style&index=0&id=6f33626f&prod&lang=css
+var GanttElasticvue_type_style_index_0_id_6f33626f_prod_lang_css = __webpack_require__(5);
 
 // CONCATENATED MODULE: ./src/GanttElastic.vue
 

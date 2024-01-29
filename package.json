@@ -1,6 +1,6 @@
 {
   "name": "gantt-elastic-custum-chart",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Gantt chart. Elastic javascript gantt chart. Vue gantt. Project manager responsive gantt. jquery gantt.",
   "main": "src/GanttElastic.vue",
   "dependencies": {
@@ -62,7 +62,7 @@
     "project",
     "task"
   ],
-  "author": "Rafal Pospiech <neuronet.io@gmail.com> (https://neuronet.io)",
+  "author": "chengv4 <c792184143@gmail.com> ",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/neuronetio/gantt-elastic/issues"

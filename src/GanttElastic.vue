@@ -1463,7 +1463,7 @@ const GanttElastic = {
      */
     getTaskListColumns() {
       this.calculateTaskListColumnsDimensions();
-      return this.state.options.taskList.columns;
+      return this.state.options.taskList.columns.filter(v => !v.fixed);
     },
 
     /**

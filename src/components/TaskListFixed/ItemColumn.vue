@@ -90,7 +90,6 @@ export default {
       }
       return false;
     },
-
     /**
      * Get column value
      *

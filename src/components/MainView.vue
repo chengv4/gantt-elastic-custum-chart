@@ -39,6 +39,7 @@
           >
             <task-list></task-list>
           </div>
+
           <div
             class="gantt-elastic__main-view-container"
             :style="{ ...root.style['main-view-container'] }"
@@ -52,6 +53,19 @@
             @wheel.prevent="chartWheel"
           >
             <chart></chart>
+          </div>
+          <div
+            v-if="fixedCols.length"
+            ref="taskList"
+            class="gantt-elastic__task-list-container"
+            :style="{
+              ...root.style['task-list-container'],
+              width: getFixedWidth,
+              height: root.state.options.height - hiddenRowsHeight + 'px'
+            }"
+            v-show="root.state.options.taskList.display"
+          >
+            <task-list-fixed></task-list-fixed>
           </div>
         </div>
       </div>
@@ -76,7 +90,8 @@
       :style="{
         ...root.style['chart-scroll-container'],
         ...root.style['chart-scroll-container--horizontal'],
-        marginLeft: getMarginLeft
+        marginLeft: getMarginLeft,
+        marginRight: getMarginRight
       }"
       @scroll="onHorizontalScroll"
       ref="chartScrollContainerHorizontal"
@@ -91,6 +106,7 @@
 
 <script>
 import TaskList from './TaskList/TaskList.vue';
+import TaskListFixed from './TaskListFixed/TaskList.vue';
 import Chart from './Chart/Chart.vue';
 
 let ignoreScrollEvents = false;
@@ -99,7 +115,8 @@ export default {
   name: 'MainView',
   components: {
     TaskList,
-    Chart
+    Chart,
+    TaskListFixed
   },
   inject: ['root'],
   data() {
@@ -158,9 +175,48 @@ export default {
       if (!this.root.state.options.taskList.display) {
         return '0px';
       }
-      return this.root.state.options.taskList.finalWidth + 'px';
-    },
+      let sumFixed = 0;
 
+      if (this.fixedCols.length) {
+        sumFixed = this.fixedCols
+          .map(v => v.finalWidth)
+          .filter(v => v && !Number.isNaN(v))
+          .reduce((a, b) => a + b);
+      }
+      return this.root.state.options.taskList.finalWidth - sumFixed + 'px';
+    },
+    fixedCols() {
+      return this.root.state.options.taskList.columns.filter(v => v.fixed === 'right');
+    },
+    /**
+     * Get margin right
+     *
+     * @returns {string}
+     */
+    getMarginRight() {
+      if (!this.root.state.options.taskList.display) {
+        return '0px';
+      }
+      if (this.fixedCols.length) {
+        const sum = this.fixedCols
+          .map(v => v.finalWidth)
+          .filter(v => v && !Number.isNaN(v))
+          .reduce((a, b) => a + b);
+        return sum + 'px';
+      }
+      return '0px';
+    },
+    getFixedWidth() {
+      let sumFixed = 0;
+      if (this.fixedCols.length) {
+        sumFixed = this.fixedCols
+          .map(v => v.finalWidth)
+          .filter(v => v && !Number.isNaN(v))
+          .reduce((a, b) => a + b);
+      }
+      // this.root.state.options.taskList.finalWidth
+      return sumFixed + 'px';
+    },
     /**
      * Get vertical style
      *

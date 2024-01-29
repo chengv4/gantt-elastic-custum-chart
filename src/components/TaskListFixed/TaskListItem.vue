@@ -35,7 +35,7 @@ export default {
   },
   computed: {
     columns() {
-      return this.root.state.options.taskList.columns.filter(v => v.fixed !== 'right');
+      return this.root.state.options.taskList.columns.filter(v => v.fixed === 'right');
     }
   }
 };
