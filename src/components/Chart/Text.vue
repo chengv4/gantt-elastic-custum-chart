@@ -22,6 +22,7 @@
         :style="{ ...root.style['chart-row-text'], backgroundColor: textConfig.ellipsis ? 'transparent' : task.color }"
       >
         <div
+          v-if="textConfig.render"
           class="gantt-elastic__chart-row-text-content gantt-elastic__chart-row-text-content--text"
           :style="{
             ...root.style['chart-row-text-content'],
@@ -29,8 +30,18 @@
             ...contentStyle,
             ...textConfig.style
           }"
-          v-if="!html"
-          :title="task.label"
+        >
+          <Render :render="() => textConfig.render(task.label, task)" />
+        </div>
+        <div
+          class="gantt-elastic__chart-row-text-content gantt-elastic__chart-row-text-content--text"
+          :style="{
+            ...root.style['chart-row-text-content'],
+            ...root.style['chart-row-text-content--text'],
+            ...contentStyle,
+            ...textConfig.style
+          }"
+          v-else-if="!html"
         >
           <div>{{ showLabel }}</div>
         </div>
@@ -42,8 +53,7 @@
             ...contentStyle,
             ...textConfig.style
           }"
-          v-if="html"
-          :title="showLabel"
+          v-else-if="html"
           v-html="showLabel"
         ></div>
       </div>
@@ -52,10 +62,14 @@
 </template>
 
 <script>
+import Render from '../Render/index.vue';
 export default {
   name: 'ChartText',
   inject: ['root'],
   props: ['task'],
+  components: {
+    Render
+  },
   data() {
     return {};
   },
