@@ -32,7 +32,8 @@
             class="gantt-elastic__task-list-container"
             :style="{
               ...root.style['task-list-container'],
-              width: root.state.options.taskList.finalWidth + 'px',
+              /* 这个宽度会导致图形空白（x轴缩放时） */
+              // width: root.state.options.taskList.finalWidth + 'px',
               height: root.state.options.height - hiddenRowsHeight + 'px'
             }"
             v-show="root.state.options.taskList.display"

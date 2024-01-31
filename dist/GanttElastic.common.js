@@ -1227,8 +1227,8 @@ var external_Vue_default = /*#__PURE__*/__webpack_require__.n(external_Vue_);
 var dayjs_min = __webpack_require__(0);
 var dayjs_min_default = /*#__PURE__*/__webpack_require__.n(dayjs_min);
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--5!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MainView.vue?vue&type=template&id=8a29f22c
-var MainViewvue_type_template_id_8a29f22c_render = function render() {
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--5!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MainView.vue?vue&type=template&id=7d011e9a
+var MainViewvue_type_template_id_7d011e9a_render = function render() {
   var _vm = this,
     _c = _vm._self._c
   return _c(
@@ -1284,8 +1284,8 @@ var MainViewvue_type_template_id_8a29f22c_render = function render() {
                       staticClass: "gantt-elastic__task-list-container",
                       style: {
                         ..._vm.root.style["task-list-container"],
-                        width:
-                          _vm.root.state.options.taskList.finalWidth + "px",
+                        /* 这个宽度会导致图形空白（x轴缩放时） */
+                        // width: root.state.options.taskList.finalWidth + 'px',
                         height:
                           _vm.root.state.options.height -
                           _vm.hiddenRowsHeight +
@@ -1410,11 +1410,11 @@ var MainViewvue_type_template_id_8a29f22c_render = function render() {
     ]
   )
 }
-var MainViewvue_type_template_id_8a29f22c_staticRenderFns = []
-MainViewvue_type_template_id_8a29f22c_render._withStripped = true
+var MainViewvue_type_template_id_7d011e9a_staticRenderFns = []
+MainViewvue_type_template_id_7d011e9a_render._withStripped = true
 
 
-// CONCATENATED MODULE: ./src/components/MainView.vue?vue&type=template&id=8a29f22c
+// CONCATENATED MODULE: ./src/components/MainView.vue?vue&type=template&id=7d011e9a
 
 // CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--5!./node_modules/vue-loader/lib??vue-loader-options!./src/components/TaskList/TaskList.vue?vue&type=template&id=68b1933c
 var TaskListvue_type_template_id_68b1933c_render = function render() {
@@ -4275,8 +4275,8 @@ Taskvue_type_template_id_4a3c3dc1_render._withStripped = true
 
 // CONCATENATED MODULE: ./src/components/Chart/Row/Task.vue?vue&type=template&id=4a3c3dc1
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--5!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Chart/Text.vue?vue&type=template&id=27de9b1e
-var Textvue_type_template_id_27de9b1e_render = function render() {
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--5!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Chart/Text.vue?vue&type=template&id=7dec53a4
+var Textvue_type_template_id_7dec53a4_render = function render() {
   var _vm = this,
     _c = _vm._self._c
   return _c(
@@ -4313,7 +4313,7 @@ var Textvue_type_template_id_27de9b1e_render = function render() {
               attrs: { xmlns: "http://www.w3.org/1999/xhtml" },
             },
             [
-              !_vm.html
+              _vm.textConfig.render
                 ? _c(
                     "div",
                     {
@@ -4325,13 +4325,33 @@ var Textvue_type_template_id_27de9b1e_render = function render() {
                         ..._vm.contentStyle,
                         ..._vm.textConfig.style,
                       },
-                      attrs: { title: _vm.task.label },
+                    },
+                    [
+                      _c("Render", {
+                        attrs: {
+                          render: () =>
+                            _vm.textConfig.render(_vm.task.label, _vm.task),
+                        },
+                      }),
+                    ],
+                    1
+                  )
+                : !_vm.html
+                ? _c(
+                    "div",
+                    {
+                      staticClass:
+                        "gantt-elastic__chart-row-text-content gantt-elastic__chart-row-text-content--text",
+                      style: {
+                        ..._vm.root.style["chart-row-text-content"],
+                        ..._vm.root.style["chart-row-text-content--text"],
+                        ..._vm.contentStyle,
+                        ..._vm.textConfig.style,
+                      },
                     },
                     [_c("div", [_vm._v(_vm._s(_vm.showLabel))])]
                   )
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.html
+                : _vm.html
                 ? _c("div", {
                     staticClass:
                       "gantt-elastic__chart-row-text-content gantt-elastic__chart-row-text-content--html",
@@ -4341,7 +4361,6 @@ var Textvue_type_template_id_27de9b1e_render = function render() {
                       ..._vm.contentStyle,
                       ..._vm.textConfig.style,
                     },
-                    attrs: { title: _vm.showLabel },
                     domProps: { innerHTML: _vm._s(_vm.showLabel) },
                   })
                 : _vm._e(),
@@ -4352,18 +4371,22 @@ var Textvue_type_template_id_27de9b1e_render = function render() {
     ]
   )
 }
-var Textvue_type_template_id_27de9b1e_staticRenderFns = []
-Textvue_type_template_id_27de9b1e_render._withStripped = true
+var Textvue_type_template_id_7dec53a4_staticRenderFns = []
+Textvue_type_template_id_7dec53a4_render._withStripped = true
 
 
-// CONCATENATED MODULE: ./src/components/Chart/Text.vue?vue&type=template&id=27de9b1e
+// CONCATENATED MODULE: ./src/components/Chart/Text.vue?vue&type=template&id=7dec53a4
 
 // CONCATENATED MODULE: ./node_modules/vue-loader/lib??vue-loader-options!./src/components/Chart/Text.vue?vue&type=script&lang=js
+
 
 /* harmony default export */ var Textvue_type_script_lang_js = ({
   name: 'ChartText',
   inject: ['root'],
   props: ['task'],
+  components: {
+    Render: Render
+  },
   data() {
     return {};
   },
@@ -4447,8 +4470,8 @@ Textvue_type_template_id_27de9b1e_render._withStripped = true
 
 var Text_component = normalizeComponent(
   Chart_Textvue_type_script_lang_js,
-  Textvue_type_template_id_27de9b1e_render,
-  Textvue_type_template_id_27de9b1e_staticRenderFns,
+  Textvue_type_template_id_7dec53a4_render,
+  Textvue_type_template_id_7dec53a4_staticRenderFns,
   false,
   null,
   null,
@@ -5556,8 +5579,8 @@ let ignoreScrollEvents = false;
 
 var MainView_component = normalizeComponent(
   components_MainViewvue_type_script_lang_js,
-  MainViewvue_type_template_id_8a29f22c_render,
-  MainViewvue_type_template_id_8a29f22c_staticRenderFns,
+  MainViewvue_type_template_id_7d011e9a_render,
+  MainViewvue_type_template_id_7d011e9a_staticRenderFns,
   false,
   null,
   null,
