@@ -1432,20 +1432,21 @@ const GanttElastic = {
         task.height = this.state.options.row.height;
         task.x = this.timeToPixelOffsetX(task.startTime);
         /* Add multiple displays in one row  */
-        let realIndex = index;
-        if (task.showTaskList === false) {
-          const indx = visibleTasks
-            .filter(v => v.showTaskList !== false)
-            .map(v => v.id)
-            .indexOf(task.parentId);
-          realIndex = indx;
-        } else {
-          const indx = visibleTasks.slice(0, index).filter(v => v.showTaskList === false).length;
+        // let realIndex = index;
+        // if (task.showTaskList === false) {
+        //   const indx = visibleTasks
+        //     .filter(v => v.showTaskList !== false)
+        //     .map(v => v.id)
+        //     .indexOf(task.parentId);
 
-          realIndex = index - indx;
-        }
+        //   realIndex = indx;
+        // } else {
+        //   const indx = visibleTasks.slice(0, index).filter(v => v.showTaskList === false).length;
+
+        //   realIndex = index - indx;
+        // }
         task.y =
-          (this.state.options.row.height + this.state.options.chart.grid.horizontal.gap * 2) * realIndex +
+          (this.state.options.row.height + this.state.options.chart.grid.horizontal.gap * 2) * index +
           this.state.options.chart.grid.horizontal.gap;
       }
       return visibleTasks;

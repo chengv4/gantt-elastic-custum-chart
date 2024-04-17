@@ -7,7 +7,7 @@
  */
 -->
 <template>
-  <div class="gantt-elastic__task-list-item" :style="{ ...root.style['task-list-item'] }">
+  <div class="gantt-elastic__task-list-item" :style="{ ...root.style['task-list-item'] }" @click="handleRow">
     <item-column v-for="column in columns" :key="column._id" :column="column" :task="task">
       <task-list-expander
         v-if="column.expander"
@@ -36,6 +36,13 @@ export default {
   computed: {
     columns() {
       return this.root.state.options.taskList.columns.filter(v => v.fixed !== 'right');
+    }
+  },
+  methods: {
+    handleRow(event) {
+      if (this.root.$listeners.taskRowClick) {
+        this.root.$listeners.taskRowClick(event, this.task);
+      }
     }
   }
 };
