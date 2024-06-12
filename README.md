@@ -1,3 +1,5 @@
+yarn add gantt-elastic-custum-chart
+npm install gantt-elastic-custum-chart
 
 ```
 // 新增功能配置
@@ -32,6 +34,15 @@ taskList: {
 		}
 	  }
 	]
+}
+
+增加 点击行
+import GanttElastic from 'gantt-elastic-custum-chart';
+
+<GanttElastic :tasks="tasks" :options="options" @taskRowClick="taskRowClick" />
+
+taskRowClick(e, row) {
+		// do something
 }
 ```
 
